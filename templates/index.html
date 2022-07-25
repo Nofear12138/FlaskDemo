@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ name }}'s Watchlist</title>
+</head>
+
+<body>
+    <!-- 自己添加的内容 -->
+    <header>
+        <a href="#" class="logo">Igem</a>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li>
+                <a href="#">Project<img src="下箭头.png" alt=""></a>
+                <ul class="u1">
+                    <li><a href="">Description</a></li>
+                    <li><a href="">Design</a></li>
+                    <li><a href="">Model</a></li>
+                    <li><a href="">Proof</a></li>
+                    <li><a href="">Contribution</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Lab<img src="下箭头.png" alt=""></a>
+                <ul class="u1">
+                    <li><a href="">Experiments</a></li>
+                    <li><a href="">Results</a></li>
+                    <li><a href="">Notebook</a></li>
+                    <li><a href="">Safety</a></li>
+                    <li><a href="">Parts</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Human Practices<img src="下箭头.png" alt=""></a>
+                <ul class="u1">
+                    <li><a href="">Integration</a></li>
+                    <li><a href="">Collaboration</a></li>
+                    <li><a href="">Partnership</a></li>
+                    <li><a href="">Inclusion</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Team<img src="下箭头.png" alt=""></a>
+                <ul class="u1">
+                    <li><a href="">Members</a></li>
+                    <li><a href="">Attribution</a></li>
+                    <li><a href="">Sponsors</a></li>
+                </ul>
+            </li>
+            <li><a href="">Awards</a></li>
+        </ul>
+    </header>
+
+    <h2>{{ name }}'s Watchlist</h2>
+    {# 使用 length 过滤器获取 movies 变量的长度 #}
+    <p>{{ movies|length }} Titles</p>
+    <ul>
+        {% for movie in movies %} {# 迭代 movies 变量 #}
+        <li>{{ movie.title }} - {{ movie.year }}</li> {# 等同于 movie['title'] #}
+        {% endfor %} {# 使用 endfor 标签结束 for 语句 #}
+    </ul>
+    <footer>
+        <small>&copy; 2018 <a href="http://helloflask.com/book/3">HelloFlask</a></small>
+    </footer>
+</body>
+
+</html>
