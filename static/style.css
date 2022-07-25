@@ -1,0 +1,157 @@
+@import url("http://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+
+body {
+    justify-content: center;
+    background: rgba(73,175,184,0.6);
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 80px;
+    z-index: 1;
+    transition: 0.6s;
+}
+
+header .logo {
+    font-size: 32px;
+    color: red;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.6s;
+}
+
+header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    text-align: center;
+    height: 60px;
+    width: 230px;
+    list-style: none;
+}
+
+header ul li:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+header ul li a:hover {
+    color: red;
+}
+
+header ul li a img {
+    width: 15px;
+}
+
+header ul li a {
+    height: 100%;
+    width: 100%;
+    line-height: 60px;
+    text-align: center;
+    font-size: 20px;
+    margin: 0 0;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    letter-spacing: 2px;
+    transition: 0.6s;
+}
+
+header.sticky {
+    padding: 6px 100px;
+    background: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+
+}
+
+header.sticky .logo,
+header.sticky ul li a {
+    color: white;
+}
+
+header ul li ul {
+    display: none;
+}
+
+header ul li:hover ul {
+    width: 230px;
+    display: block;
+    background-image: linear-gradient(to right, #3ab5b0 0%, #3d99be 31%, #56317a 100%);
+}
+
+header ul li ul li a {
+    margin: auto;
+    font-size: 20px;
+    text-align: center;
+}
+
+header ul li ul li:hover {
+    background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+}
+
+/* 页面整体 */
+body {
+    margin: auto;
+    max-width: 580px;
+    font-size: 14px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+/* 页脚 */
+footer {
+    color: #888;
+    margin-top: 15px;
+    text-align: center;
+    padding: 10px;
+}
+
+/* 头像 */
+.avatar {
+    margin-top: 200px;
+    width: 40px;
+}
+
+/* 电影列表 */
+.movie-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.movie-list li {
+    padding: 12px 24px;
+    border-bottom: 1px solid #ddd;
+}
+
+.movie-list li:last-child {
+    border-bottom:none;
+}
+
+.movie-list li:hover {
+    background-color: #f8f9fa;
+}
+
+/* 龙猫图片 */
+.totoro {
+    display: block;
+    margin: 0 auto;
+    height: 100px;
+}
