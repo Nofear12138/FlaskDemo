@@ -23,10 +23,12 @@
         <ul>
             <li><a href="{{ url_for('index') }}">Home</a></li>
             <li>
-                <a href="#">Login<img src="{{ url_for('static',filename='images/downar.png')}}" alt=""></a>
+                <a href="{{url_for('login')}}">Login<img src="{{ url_for('static',filename='images/downar.png')}}"
+                        alt=""></a>
             </li>
             <li>
-                <a href="#">Lagout<img src="{{ url_for('static',filename='images/downar.png')}}" alt=""></a>
+                <a href="{{url_for('logout')}}">Lagout<img src="{{ url_for('static',filename='images/downar.png')}}"
+                        alt=""></a>
             </li>
             <li>
                 <a href="#">Sign Up<img src="{{ url_for('static',filename='images/downar.png')}}" alt=""></a>
@@ -42,7 +44,7 @@
     </h2>
     {% block content %}{% endblock %}
     <footer>
-        <small>&copy; 2018 <a href="http://helloflask.com/book/3">HelloFlask</a></small>
+        <small>&copy; 2022 <a href="#">Knowledge Graph</a></small>
     </footer>
     <script>
         // 鼠标滚轮滚动事件
