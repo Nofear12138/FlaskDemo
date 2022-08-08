@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name }}'s Knowledge Graph</title>
+    <link rel="icon" href="{{ url_for('static',filename='favicon.png')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    {% endblock %}
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">Algorithm</a>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li>
+                <a href="#">Login<img src="{{ url_for('static',filename='images/downar.png')}}" alt=""></a>
+            </li>
+            <li>
+                <a href="#">Lagout<img src="{{ url_for('static',filename='images/downar.png')}}" alt=""></a>
+            </li>
+            <li>
+                <a href="#">Sign Up<img src="{{ url_for('static',filename='images/downar.png')}}" alt=""></a>
+            </li>
+            <li>
+                <a href="#">Contact us<img src="{{ url_for('static',filename='images/downar.png')}}" alt=""></a>
+            </li>
+        </ul>
+    </header>
+    <h2>
+        <img src="{{url_for('static',filename='images/avatar.jpg')}}" class="avatar" alt="Avatar">
+        {{ name }}'s Knowledge Graph
+    </h2>
+    {% block content %}{% endblock %}
+    <footer>
+        <small>&copy; 2018 <a href="http://helloflask.com/book/3">HelloFlask</a></small>
+    </footer>
+    <script>
+        // 鼠标滚轮滚动事件
+        window.addEventListener("scroll", () => {
+            let header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+
+    </script>
+</body>
+
+</html>

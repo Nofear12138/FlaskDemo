@@ -9,7 +9,7 @@
 
 body {
     justify-content: center;
-    background: rgba(73,175,184,0.6);
+    background: linear-gradient(200deg, rgb(105, 202, 133), rgb(52, 156, 219));
 }
 
 header {
@@ -154,4 +154,9 @@ footer {
     display: block;
     margin: 0 auto;
     height: 100px;
+}
+
+.back404 a{
+   text-decoration: none;
+   
 }

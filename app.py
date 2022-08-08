@@ -87,3 +87,16 @@ def forge():
 
     db.session.commit()
     click.echo('Done.')
+
+#模板上下文处理函数
+@app.context_processor
+def inject_user():
+    user=User.query.first()
+    return dict(user=user)
+
+#404
+@app.errorhandler(404)
+def page_not_found(e):
+   # user = User.query.first()
+    return render_template('404.html'),404
+
