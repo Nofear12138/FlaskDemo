@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ name }}'s Knowledge Graph</title>
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+
     <link rel="icon" href="{{ url_for('static',filename='favicon.png')}}">
     <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
 </head>
@@ -37,8 +40,173 @@
         </li> {# 等同于 movie['title'] #}
         {% endfor %} {# 使用 endfor 标签结束 for 语句 #}
     </ul>
-    <img class="totoro" src="{{url_for('static',filename='images/totoro.gif')}}" alt="Totoro">
+    {% if current_user.is_authenticated %}
+    <div class="content">
+        <div id="main"></div>
+    </div>
+    {% endif %}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'));
+        var categories = [{ name: "算法" }, { name: "属性" }, { name: "例题" }];
+        option = {
+            // 图的标题
+            title: {
+                text: 'My Knowledge Graph'
+            },
+            // 提示框的配置
+            tooltip: {
+                formatter: function (x) {
+                    return x.data.des;
+                }
+            },
+            // 工具箱
+            toolbox: {
+                // 显示工具箱
+                show: true,
+                feature: {
+                    mark: {
+                        show: true
+                    },
+                    // 还原
+                    restore: {
+                        show: true
+                    },
+                    // 保存为图片
+                    saveAsImage: {
+                        show: true
+                    }
+                }
+            },
+            legend: [{
+                // selectedMode: 'single',
+                data: categories.map(function (a) {
+                    return a.name;
+                })
+            }],
+            series: [{
+                type: 'graph', // 类型:关系图
+                layout: 'force', //图的布局，类型为力导图
+                symbolSize: 40, // 调整节点的大小
+                roam: true, // 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移,可以设置成 'scale' 或者 'move'。设置成 true 为都开启
+                edgeSymbol: ['circle', 'arrow'],
+                edgeSymbolSize: [2, 10],
+                edgeLabel: {
+                    normal: {
+                        textStyle: {
+                            fontSize: 20
+                        }
+                    }
+                },
+                force: {
+                    repulsion: 2500,
+                    edgeLength: [10, 50]
+                },
+                draggable: true,
+                lineStyle: {
+                    normal: {
+                        width: 2,
+                        color: '#4b565b',
+                    }
+                },
+                edgeLabel: {
+                    normal: {
+                        show: true,
+                        formatter: function (x) {
+                            return x.data.name;
+                        }
+                    }
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        textStyle: {}
+                    }
+                },
+                //员工--最短路；机构--图论，员工id--floyd;年龄--Bellman-Ford
+                //姓名--SPFA,性别：朴素Dijkstra，日期：堆优化Dijkstra
+                // 数据
+                data: [{
+                    name: '最短路',
+                    des: '', //描述
+                    symbolSize: 60,
+                    category: '算法',
+                }, {
+                    name: 'Floyd', symbolSize: 50, category: '属性',
+                }, {
+                    name: 'SPFA', symbolSize: 50, category: '属性',
+                }, {
+                    name: 'Bellman-Ford', symbolSize: 50, category: '属性',
+                }, {
+                    name: '朴素Dijkstra', symbolSize: 50, category: '属性',
+                }, {
+                    name: '堆优化Dijkstra', symbolSize: 50, category: '属性',
+                }, {
+                    name: '图论',
+                    des: '',//没有描述
+                    symbolSize: 70,
+                    category: '算法',
+                }, {
+                    name: 'CF001',
+                    des: '',
+                    symbolSize: 40,
+                    category: '例题',
+                }, {
+                    name: 'CF002',
+                    des: '',
+                    symbolSize: 40,
+                    category: '例题',
+                }],
+                links: [{
+                    source: '最短路',
+                    target: '图论',
+                    name: 'belong to',
+                    des: ''
+                }, {
+                    source: 'Floyd',
+                    target: '最短路',
+                    name: 'isPropertyOf',
+                    des: ''
+                }, {
+                    source: 'SPFA',
+                    target: '最短路',
+                    name: 'isPropertyOf',
+                    des: ''
+                }, {
+                    source: 'Bellman-Ford',
+                    target: '最短路',
+                    name: 'isPropertyOf',
+                    des: ''
+                }, {
+                    source: '朴素Dijkstra',
+                    target: '最短路',
+                    name: 'isPropertyOf',
+                    des: ''
+                }, {
+                    source: '堆优化Dijkstra',
+                    target: '最短路',
+                    name: 'isPropertyOf',
+                    des: ''
+                }, {
+                    source: 'CF001',
+                    target: 'Floyd',
+                    name: 'isExampleOf',
+                    des: ''
+                }, {
+                    source: 'CF002',
+                    target: 'Bellman-Ford',
+                    name: 'isExampleOf',
+                    des: ''
+                }],
+                categories: categories,
+            }]
+        };
+        myChart.setOption(option);
+    </script>
+
+
     {% endblock %}
 </body>
+
 
 </html>

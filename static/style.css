@@ -112,7 +112,7 @@ header ul li ul li:hover {
 /* 页面整体 */
 body {
     margin: auto;
-    max-width: 580px;
+    max-width: 750px;
     font-size: 14px;
     font-family: Helvetica, Arial, sans-serif;
 }
@@ -210,4 +210,17 @@ input[name=year] {
 
 .inline-form{
     display: inline;
+}
+
+.content{
+    width: 100%;
+    height: 800px;
+}
+#main{
+    justify-content: center;
+    align-items: center;
+    border: 2px solid green;
+    border-radius: 3px;
+    height: 600px;
+    width: 750px;
 }
